@@ -1,0 +1,21 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/index.css"/>
+    <title>Catz R Cool</title>
+</head>
+<body>
+<h1>Cats are the best!</h1>
+<form action="/addComment" method="post">
+    <div>
+        <label for="commentForm">What do you think?</label>
+        <textarea id="commentForm"></textarea>
+        <button type="submit">Send</button>
+    </div>
+</form>
+<h2>Other people's thoughts:</h2>
+<ul class="comments">
+    <% _.forEach(comments, (comment) => { %><li><%= comment.comment %></li><% }); %>
+</ul>
+<script src="index.js"></script>
+</body>
+</html>
