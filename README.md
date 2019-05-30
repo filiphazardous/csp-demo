@@ -17,3 +17,25 @@ och
 h1:after { content: "Bara skojade - de är urfåniga!" }
 </style>
 ```
+
+## Lösningar
+
+### Begränsa tillåtna källor för javascript
+
+Lägg till följande rad efter `var server = http.osv`:
+
+```javascript
+res.setHeader('Content-Security-Policy', "script-src 'self'");
+```
+Om du vill kunna ladda filer från andra källor (t ex Google maps, Bootstrap el dyl) så kan du
+ tillåta även ändra källor så här:
+ ```javascript
+ res.setHeader('Content-Security-Policy', "script-src 'self' https://apis.google.com");
+ ```
+ 
+ ### Begränsa tillåtna källor för CSS
+ 
+För att begränsa även CSS på motsvarande sätt, lägg till lite till:
+```javascript
+res.setHeader('Content-Security-Policy', "script-src 'self'; style-src 'self'");
+```
